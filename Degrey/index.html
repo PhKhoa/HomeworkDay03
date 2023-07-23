@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Quicksand:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="mainHeader">
+            <div class="flex-header">
+                <div class="logo">
+                    <img src="https://file.hstatic.net/1000281824/file/tote-1_33445b051a404bb790b6d0df0275ac8d.png" alt="">
+                </div>
+
+                <div class="list">
+                    <p>Trang chủ</p>
+                    <p>Sản phẩm</p>
+                    <p>Store</p>
+                    <p>Giới thiệu</p>
+                </div>
+
+                <div class="search">
+                    <span class="material-symbols-outlined"> search </span>
+                    <input type="text" placeholder="Tìm kiếm sản phẩm...">
+                </div>
+
+                <div class="cart">
+                    <div onclick="showModal()" class="cartlogo">
+                        <img src="cart.png" alt="">
+                    </div>
+                    <span>Giỏ hàng</span>
+                    <dialog id="dialog" >
+                        <div class="exit">
+                            <span onclick="performClose()" class="material-symbols-outlined">close</span>
+                        </div>
+                        <p >Giỏ hàng</p>
+                        <div class="content-input">
+                            <!-- <div class="product-bill">
+                                <span>Degrey Simili Tote Matcha - SITOM</span>
+                                <span>Số lượng: </span>
+                                <span>Giá tiền: </span>
+                                <button>xóa</button>
+                                <button>sửa</button>
+                            </div>
+                            <div class="product-bill">
+                                <span>Degrey Simili Tote Matcha - SITOM</span>
+                                <span>Số lượng: </span>
+                                <span>Giá tiền: </span>
+                                <button>xóa</button>
+                                <button>sửa</button>
+                            </div> -->
+                        </div>
+                        <hr>    
+                        <div class="bill-input">
+                            <!-- <div class="text-bill">
+                                <p>Tổng tiền: </p>
+                            </div> -->
+                            <div class="btn-confirm">
+                                <button>Đặt hàng</button>
+                            </div>
+                        </div>
+                    </dialog>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="shop">
+            <div class="shop-introduce">
+                <span>Trang chủ</span>
+                
+                <li class="active">
+                    <span style="color: #777777;">Tất cả sản phẩm</span>
+                </li>
+            </div>
+        </div>
+
+        <div class="banner">
+            <img src="https://file.hstatic.net/1000281824/file/cover_1_87a6ac90b1c94059a093003239175873.jpg" alt="">
+        </div>
+
+        <div class="collection-headding">
+            <div class="row">
+                <h3>Tất cả sản phẩm</h3>
+                <div class="sapxep">
+                    <div class="container-sapxep">
+                        <p>
+                            <img style="width: 25px; height: 25px;margin: 5px;" src="sapxep.jpg" alt="">
+                            Sắp xếp
+                        </p>
+                        <div class="down"><img src="down.png" alt=""></div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="collection-filter">
+            <div class="collection-filter-container">
+                <div class="filter">
+                    <img src="funnel.png" alt="">
+                    <span style="font-weight: bold; margin-left: 10px;">BỘ LỌC</span>
+                </div>
+                <div class="choice">
+                    <div class="loc">
+                        <div class="a">
+                            <span>Lọc giá</span>
+                            <div class="down"><img src="down.png" alt=""></div>
+                        </div>
+
+                        <div class="a">
+                            <span >Màu sắc</span>
+                            <div class="down"><img src="down.png" alt=""></div>
+                        </div>
+
+                        <div class="a">
+                            <span>Kích thước</span>
+                            <div class="down"><img src="down.png" alt=""></div>
+                        </div>
+                        
+                    </div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <div class="listproduct">
+            <div class="row1">
+                
+                <!-- <div class="product1">
+                    <div style="visibility: hidden;" class="order">
+                        <span>Đặt hàng trước</span>
+                    </div>
+                    <img src="https://product.hstatic.net/1000281824/product/img_9919_26d1c4e8cab84d928e701e71d21adb8b_large.jpeg" alt="">
+                    <div class="detail">
+                        <h3>
+                            <a href=""> Degrey Raglan Line Tee Đen - DRLD </a>
+                        </h3>
+                        
+                        <div class="on-sale">
+                            <span class="price">240,000đ</span>
+                            <span class="price-sale">350,000đ</span>
+                        </div>
+                    </div>
+                </div> -->
+                
+            </div>
+
+            
+
+            <div class="loadmore">
+                <a href="">Xem thêm sản phẩm
+                    <b> tất cả sản phẩm</b>
+                </a>
+                
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-info">
+            <div class="main-info">
+                <div class="address">
+                    <h4>Về DEGREY</h4>
+                    <div class="flex">
+                        <div class="degrey">
+                            <p>Cái tên Degrey được tạo ra rất ngẫu hứng, xuất phát từ “Chuỗi ngày u buồn về sự nghiệp, tương lai trong quá khứ của chính mình” – theo lời chia sẻ của Degrey’s founder.
+                                <br>
+                                <br>
+                                <b>CÔNG TY TNHH DEGREY</b>
+                                <br>
+                                0315986019 0315986019 cấp ngày 31/10/2019 tại Sở kế hoạch đầu tư TPHCM
+                            </p>
+                            <div class="footer-logo">
+                                <img src="https://file.hstatic.net/1000281824/file/dathongbao_22c990fc936b40e0a50a1b646f478284.png" alt="">
+                            </div>
+                        </div>
+                        <div class="specific-address">
+                            <ul>
+                                <li class="contact">
+                                    <b>Địa chỉ</b>
+                                    <br>
+                                    <br>
+                                    <b>-Sài gòn:
+                                        <br>
+                                    </b>
+                                    43 Huỳnh Văn Bánh P.17 Q.Phú Nhuận
+                                    <br>
+                                    1041 Luỹ Bán Bích P.Tân Thành Q.Tân Phú 
+                                    <br>
+                                    <b>-Đà Lạt:
+                                        <br>
+                                    </b>
+                                    11 Khu Hoà Bình P.1
+                                    <br>
+                                </li>
+                                <li class="contact2">
+                                    <b>Điện thoại:</b>
+                                    033631117
+                                </li>
+                                <li class="contact3">
+                                    <b>Email:</b>
+                                    degrey.vn@gmail.com
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="support">
+                    <h4>Hỗ trợ khách hàng</h4>
+                    <div class="content-footer">
+                        <ul>
+                            <li class="item">
+                                <a href="">Giới thiệu Degrey</a>
+                            </li>
+                            <li class="item">
+                                <a href="">Hệ thống cửa hàng</a>
+                            </li>
+                            <li class="item">
+                                <a href="">Hướng dẫn đặt hàng</a>
+                            </li>
+                            <li class="item">
+                                <a href="">Chính sách và quy định</a>
+                            </li>
+                            <li class="item">
+                                <a href="">Chính sách bảo mật</a>
+                            </li>
+                            <li class="item">
+                                <a href="">Thông tin sở hữu</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="takecare">
+                    <h4>Chăm són khách hàng</h4>
+                    <div class="copllaps">
+                        <div class="hline">
+                            <div class="box-icon">
+                                <img style="width: 40px;height: 40px; " src="https://davidfrenchfurnishings.co.uk/_webedit/cached-images/29-0-1326-963-7505-8231-476.png" alt="">
+                            </div>
+                            <div class="box-content">
+                                <span style="color: #9B9B9B;font-size: 21px;">0336311117</span>
+                                <u style="color: white;">degrey.vn@gmail.com</u>
+                            </div>
+                        </div>
+                        <h4>Follow Us</h4>
+                        
+                        <ul class="social">
+                            <li>
+                                <img style="width: 15px;height: 15px;background-color: white;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTduekmyVrO-eCUy4HArKlxzSwrbkKTUWPtqDwMdWU&s" alt="">
+                            </li>
+                            <li>
+                                <img style="width: 15px;height: 15px;background-color: white;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJB8Vmg-5-eHPut3HVaV1M6HqQ0ctyOZ_Qo1OdClw&s" alt="">
+                            </li>
+                            <li>
+                                <img style="width: 28px;height: 28px;background-color: white;" src="./ins.jpg" alt="">
+                            </li>
+                            <li>
+                                <img style="width: 28px;height: 28px;background-color: white;" src="./gg.jpg" alt="">
+                            </li>
+                            <li>
+                                <img style="width: 23px;height: 23px;background-color: white;" src="./yt.jpg" alt="">
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <div class="container-copyright">
+                    <p>Copyright © 2023  DEGREY VIETNAM Powered by Haravan</p>
+                </div>
+                
+            </div>
+        </div>
+
+        
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
