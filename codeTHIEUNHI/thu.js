@@ -58,9 +58,9 @@ function addBigNumbers(a, b) {
     const [numA, toantu, numB] = input.split(" ");
   
     let result;
-    if (toantu === "+") {
+    if (toantu == "+") {
       result = addBigNumbers(numA, numB);
-    } else if (toantu === "*") {
+    } else if (toantu == "*") {
       result = multiplyBigNumbers(numA, numB);
     } else {
       console.log("Toán tử không hợp lệ. Vui lòng sử dụng '+' hoặc '*'");

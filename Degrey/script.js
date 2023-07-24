@@ -190,6 +190,7 @@ function addToCart(clothes){
             cartList[i].soluong = clothes.soluong;
             cartList[i].stock += 1;
             console.log(cartList);
+            isExist = true;
             return;
         }
     }
@@ -204,7 +205,6 @@ function addToCart(clothes){
     }
     
 }
-
 
 for (let i=0;i<products.length;i++){
     for (let j=0;j<clothesList.length;j++){
@@ -221,26 +221,71 @@ function showModal() {
     }
     bill(total);
 }
-
   function performClose() {
     document.getElementById('dialog').close();
     let productInCart = document.getElementsByClassName('content-input');
+    productInCart[0].innerHTML=``;
+    let billInput = document.getElementsByClassName('bill-input');
+    billInput[0].innerHTML=`
+    <div class="btn-confirm">
+        <button>Đặt hàng</button>
+    </div>`;
+    total = 0;
 }
+
+
 
 function buildItem(cloth){
     let productBill = document.createElement('div');
     productBill.className = "product-bill",
     productBill.innerHTML = `<span>${cloth.name}</span>
     <span>Số lượng: ${cloth.stock}</span>
-    <span>Giá tiền: ${cloth.price}</span>
     `;
+    
+    let textGiaTien = document.createElement('span');
+    textGiaTien.innerText = `Giá tiền: ${cloth.price}`; 
     let btnDelete = document.createElement('button');
     btnDelete.innerText = "xóa";
     let btnUpdate = document.createElement('button');
-    btnUpdate.innerText = "sửa";
+    btnUpdate.innerText = "thêm";
+
+    productBill.appendChild(textGiaTien);
+    productBill.appendChild(btnDelete);
+    productBill.appendChild(btnUpdate);
+
+    
+
+
+    btnUpdate.addEventListener("click",()=>{
+        if (cloth.stock<=cloth.soluong){
+            cloth.stock++;
+            updateCart(cloth);
+           
+            productBill.innerHTML=`<span>${cloth.name}</span>
+            <span>Số lượng: ${cloth.stock}</span>
+            `;
+
+            productBill.appendChild(textGiaTien);
+            productBill.appendChild(btnDelete);
+            productBill.appendChild(btnUpdate);
+
+            
+        }else {
+            alert("Quá số lượng rồi !!!");
+            return;
+        }
+    });
 
     return productBill;
 }
+
+function updateCart(cloth){
+    let total1 = cloth.price*cloth.stock;
+    console.log(total);
+}
+
+
+
 
 let  total = 0;
 function bill(total){
