@@ -221,7 +221,8 @@ function showModal() {
     }
     bill(total);
 }
-  function performClose() {
+
+function performClose() {
     document.getElementById('dialog').close();
     let productInCart = document.getElementsByClassName('content-input');
     productInCart[0].innerHTML=``;
@@ -234,16 +235,17 @@ function showModal() {
 }
 
 
-
 function buildItem(cloth){
     let productBill = document.createElement('div');
     productBill.className = "product-bill",
     productBill.innerHTML = `<span>${cloth.name}</span>
     <span>Số lượng: ${cloth.stock}</span>
     `;
-    
+    let total = cloth.price*cloth.stock;
+    console.log(total);
+
     let textGiaTien = document.createElement('span');
-    textGiaTien.innerText = `Giá tiền: ${cloth.price}`; 
+    textGiaTien.innerText = `Giá tiền: ${total}`; 
     let btnDelete = document.createElement('button');
     btnDelete.innerText = "xóa";
     let btnUpdate = document.createElement('button');
@@ -253,41 +255,77 @@ function buildItem(cloth){
     productBill.appendChild(btnDelete);
     productBill.appendChild(btnUpdate);
 
-    
-
-
     btnUpdate.addEventListener("click",()=>{
         if (cloth.stock<=cloth.soluong){
             cloth.stock++;
-            updateCart(cloth);
-           
+
             productBill.innerHTML=`<span>${cloth.name}</span>
             <span>Số lượng: ${cloth.stock}</span>
+            `;
+
+            let total = cloth.price*cloth.stock;
+            //console.log(total);
+            
+            let textGiaTien = document.createElement('span');
+            textGiaTien.innerText = `Giá tiền: ${total}`;
+
+            total=0;
+            for (let i=0;i<cartList.length;i++){
+                total += cartList[i].price * cartList[i].stock;
+            }
+            let billInput = document.getElementsByClassName('bill-input')
+            billInput[0].innerHTML=`
+            <div class="btn-confirm">
+                <button>Đặt hàng</button>
+            </div>
+            <div class="text-bill">
+                <p>Tổng tiền: ${total}</p>
+            </div> 
             `;
 
             productBill.appendChild(textGiaTien);
             productBill.appendChild(btnDelete);
             productBill.appendChild(btnUpdate);
-
-            
         }else {
             alert("Quá số lượng rồi !!!");
             return;
         }
     });
 
+    btnDelete.addEventListener("click",()=>{
+        // Xóa sản phẩm khỏi giỏ hàng
+        let index = cartList.findIndex(item => item.name == cloth.name);
+        if (index !== -1) {
+            cartList.splice(index, 1);
+        }
+
+        // Cập nhật lại tổng tiền
+        let total = 0;
+        for (let i = 0; i < cartList.length; i++) {
+            total += cartList[i].price * cartList[i].stock;
+        }
+
+        // Hiển thị giỏ hàng và tổng tiền mới
+        let productInCart = document.getElementsByClassName('content-input');
+        productInCart[0].innerHTML = "";
+        for (let i = 0; i < cartList.length; i++) {
+            productInCart[0].appendChild(buildItem(cartList[i]));
+        }
+
+        let billInput = document.getElementsByClassName('bill-input');
+        billInput[0].innerHTML = `
+        <div class="btn-confirm">
+            <button>Đặt hàng</button>
+        </div>
+        <div class="text-bill">
+            <p>Tổng tiền: ${total}</p>
+        </div> `;
+    });
+
     return productBill;
 }
 
-function updateCart(cloth){
-    let total1 = cloth.price*cloth.stock;
-    console.log(total);
-}
-
-
-
-
-let  total = 0;
+let total = 0;
 function bill(total){
     let billInput = document.getElementsByClassName('bill-input');
     let textBill = document.createElement('div');
