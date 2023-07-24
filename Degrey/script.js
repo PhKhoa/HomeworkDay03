@@ -227,11 +227,8 @@ function performClose() {
     let productInCart = document.getElementsByClassName('content-input');
     productInCart[0].innerHTML=``;
     let billInput = document.getElementsByClassName('bill-input');
-    billInput[0].innerHTML=`
-    <div class="btn-confirm">
-        <button>Đặt hàng</button>
-    </div>`;
-    total = 0;
+    billInput[0].innerHTML=``;
+    buildProductCard();
 }
 
 
@@ -240,12 +237,13 @@ function buildItem(cloth){
     productBill.className = "product-bill",
     productBill.innerHTML = `<span>${cloth.name}</span>
     <span>Số lượng: ${cloth.stock}</span>
-    `;
-    let total = cloth.price*cloth.stock;
+   `;
+    let total = cloth.price*cloth.stock ;
     console.log(total);
 
     let textGiaTien = document.createElement('span');
     textGiaTien.innerText = `Giá tiền: ${total}`; 
+    
     let btnDelete = document.createElement('button');
     btnDelete.innerText = "xóa";
     let btnUpdate = document.createElement('button');
@@ -264,28 +262,36 @@ function buildItem(cloth){
             `;
 
             let total = cloth.price*cloth.stock;
-            //console.log(total);
-            
             let textGiaTien = document.createElement('span');
             textGiaTien.innerText = `Giá tiền: ${total}`;
-
             total=0;
             for (let i=0;i<cartList.length;i++){
                 total += cartList[i].price * cartList[i].stock;
             }
-            let billInput = document.getElementsByClassName('bill-input')
+
+            
+            
+
+            let billInput = document.getElementsByClassName('bill-input');
+            let btnConfirm = document.createElement('div');
+            btnConfirm.className="btn-confirm";
+            let confirm = document.createElement('button');
+            confirm.innerText="Đặt hàng";
             billInput[0].innerHTML=`
-            <div class="btn-confirm">
-                <button>Đặt hàng</button>
-            </div>
             <div class="text-bill">
                 <p>Tổng tiền: ${total}</p>
             </div> 
+            <div class="btn-confirm">
+                <button>Đặt hàng</button>
+            </div>
             `;
 
             productBill.appendChild(textGiaTien);
             productBill.appendChild(btnDelete);
             productBill.appendChild(btnUpdate);
+
+            billInput[0].appendChil(btnConfirm);
+            btnConfirm.appendChild(confirm);
         }else {
             alert("Quá số lượng rồi !!!");
             return;
@@ -314,9 +320,6 @@ function buildItem(cloth){
 
         let billInput = document.getElementsByClassName('bill-input');
         billInput[0].innerHTML = `
-        <div class="btn-confirm">
-            <button>Đặt hàng</button>
-        </div>
         <div class="text-bill">
             <p>Tổng tiền: ${total}</p>
         </div> `;
@@ -328,10 +331,19 @@ function buildItem(cloth){
 let total = 0;
 function bill(total){
     let billInput = document.getElementsByClassName('bill-input');
+    let btnConfirm = document.createElement('div');
+    btnConfirm.className="btn-confirm";
+    let confirm = document.createElement('button');
+    confirm.innerText="Đặt hàng";
+    
+    
     let textBill = document.createElement('div');
     textBill.className="text-bill";
     textBill.innerHTML=`<p>Tổng tiền: ${total} </p>`;
+
     billInput[0].appendChild(textBill);
+    billInput[0].appendChild(btnConfirm);
+    btnConfirm.appendChild(confirm);
 }
 
 
